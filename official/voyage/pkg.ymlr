@@ -1,0 +1,26 @@
+use stdlib std
+use pkglib pkg
+use modlib mod
+
+pkg.meta
+  pkg.name Voyage
+  pkg.version 1.0.0
+  pkg.description
+
+pkg.modules
+  [
+    mod.editor
+    mod.story
+  ]
+  
+pkg.dependencies
+  [
+    std.files
+      [
+      ]
+      
+    std.exe
+      
+  ]
+  
+flush

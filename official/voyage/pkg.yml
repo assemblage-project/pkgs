@@ -6,7 +6,7 @@ modules:
 - editor
 - story
 dependencies:
-- software:
+- exe:
     cmd: java
     test:
       run: java -version 2>&1 | awk -F '"' '/version/ {print $2}'
@@ -14,6 +14,12 @@ dependencies:
       expectation: 17.0.2
 - files: []
 content:
+- story:
+    img: ''
+    texts: []
+- editor:
+    language: java
+    value: -/-
 - story:
     img: ''
     texts: []
