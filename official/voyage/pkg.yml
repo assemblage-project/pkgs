@@ -5,7 +5,7 @@ meta:
   description: Haloooooooooooo
   thumbnail: https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2FYQFWg2n.jpg
 dependencies:
-- files: []
+  - files: []
 modules:
   - code:
       language: java
