@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <input type="text" id="nameInput" placeholder="Enter your name">
+  <button onclick="greetUser()">Say Hello</button>
+  <script>
+    function greetUser() {
+      const name = document.getElementById("nameInput").value;
+      alert("Hello!");
+      submitWithCodeTests("java", "public class Solution { public int sum(int a, int b) { return a + b; } }", "sum", [{ expected: 6, parameters: [3, 2] }]);
+      submitWithCodeTests("java", "public class Solution { public int sum(int a, int b) { return a + b; } }", "sum", [{ expected: 5, parameters: [3, 2] }]);
+    }
+    document.getElementById("nameInput").setAttribute("value", getArg("xD"));
+
+  </script>
+  <script src="./api.js"></script>
+</body>
+
+</html>

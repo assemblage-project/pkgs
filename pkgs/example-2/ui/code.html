@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>LeetClone UI</title>
+    <style>
+        /* Reset und grundlegende Einstellungen */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        /* Header */
+        .header {
+            background-color: #fff;
+            border-bottom: 1px solid #ebebeb;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .header nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #0073e6;
+            font-size: 14px;
+        }
+
+        /* Container für Sidebar und Hauptinhalt */
+        .container {
+            display: flex;
+            height: calc(100vh - 60px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-right: 1px solid #ebebeb;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            padding: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 10px;
+            border-bottom: 1px solid #f1f1f1;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .sidebar li:hover {
+            background-color: #f2f2f2;
+        }
+
+        /* Hauptinhalt */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100vh - 60px);
+        }
+
+        .main-content h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .main-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* Code-Editor Bereich */
+        .editor {
+            background: #1e1e1e;
+            color: #dcdcdc;
+            font-family: 'Source Code Pro', monospace;
+            padding: 15px;
+            border-radius: 4px;
+            min-height: 200px;
+        }
+
+        /* Responsives Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #ebebeb;
+                height: auto;
+            }
+
+            .main-content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">LeetClone</div>
+        <nav>
+            <a href="#">Probleme</a>
+            <a href="#">Wettbewerbe</a>
+            <a href="#">Diskussion</a>
+            <a href="#">Mein Konto</a>
+        </nav>
+    </header>
+
+    <!-- Container mit Sidebar und Hauptinhalt -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Problemliste</h3>
+            <ul>
+                <li>Einfaches Problem 1</li>
+                <li>Mittel Problem 2</li>
+                <li>Schweres Problem 3</li>
+                <li>Bonus Problem 4</li>
+            </ul>
+        </aside>
+
+        <!-- Hauptinhalt -->
+        <main class="main-content">
+            <h2>Willkommen im LeetClone Editor</h2>
+            <p>Wähle ein Problem aus der Sidebar, um zu beginnen.</p>
+
+            <!-- Code-Editor-Bereich -->
+            <div class="editor" id="codeEditor" contenteditable="true">
+                // Schreibe deinen Code hier...
+                // erstelle eine java klasse Solution mit der function sum
+                // die zwei integer parameter entgegennimmt und die summe zurückgibt
+                // Beispiel:
+                public class Solution {
+                    public int sum(int a, int b) {
+                       return a + b;
+                   }
+                }
+            </div>
+
+            <!-- Schaltfläche zur Simulation der Code-Ausführung -->
+            <button id="runBtn" style="margin-top: 10px;">Code ausführen</button>
+
+            <!-- Ausgabe-Bereich -->
+            <pre id="output" style="margin-top: 10px; background: #eee; padding: 10px;"></pre>
+        </main>
+    </div>
+
+    <!-- JavaScript für einfache Interaktivität -->
+    <script>
+        document.getElementById('runBtn').addEventListener('click', function () {
+            const code = document.getElementById('codeEditor').innerText;
+            document.getElementById('output').innerText = "Ausgabe:\n" + code;
+            parent.postMessage({ type: 'SUBMIT_EVENT', external: { type: "java", submition: code, functionName: "sum", validationTests: [{ expected: 5, parameters: [3,2]}] } }, '*');
+        });
+    </script>
+</body>
+
+</html>

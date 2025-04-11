@@ -1,0 +1,2 @@
+
+await loadUI('./code.html');
